@@ -1,2 +1,3 @@
 # js-playground
-A JavaScript playground where I try new shiny stuff
+
+A JavaScript playground where I try stuff
