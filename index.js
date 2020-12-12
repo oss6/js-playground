@@ -17,14 +17,12 @@ async function run() {
   const topics = [];
 
   for (const directory of directories) {
-    if (directory === 'streams') {
-      topics.push({
-        title: dashedToTitle(directory),
-        directory,
-        directoryPath: path.join(__dirname, 'topics', directory),
-        readme: fs.readFileSync(path.join(__dirname, 'topics', directory, 'readme.md'), 'utf-8')
-      });
-    }
+    topics.push({
+      title: dashedToTitle(directory),
+      directory,
+      directoryPath: path.join(__dirname, 'topics', directory),
+      readme: fs.readFileSync(path.join(__dirname, 'topics', directory, 'readme.md'), 'utf-8')
+    });
   }
 
   const topicAnswer = await inquirer.prompt([
