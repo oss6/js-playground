@@ -13,8 +13,7 @@ function dashedToTitle(str) {
 async function run() {
   // Get all topics
   // --------------
-  // TODO: filter out other dirs
-  const directories = fs.readdirSync(__dirname);
+  const directories = fs.readdirSync(path.join(__dirname, 'topics'));
   const topics = [];
 
   for (const directory of directories) {
@@ -22,7 +21,8 @@ async function run() {
       topics.push({
         title: dashedToTitle(directory),
         directory,
-        readme: fs.readFileSync(path.join(__dirname, directory, 'readme.md'), 'utf-8')
+        directoryPath: path.join(__dirname, 'topics', directory),
+        readme: fs.readFileSync(path.join(__dirname, 'topics', directory, 'readme.md'), 'utf-8')
       });
     }
   }
@@ -43,12 +43,12 @@ async function run() {
 
   // Get chapters for chosen topic
   // -----------------------------
-  const chapters = fs.readdirSync(path.join(__dirname, chosenTopic.directory, 'chapters'))
+  const chapters = fs.readdirSync(path.join(chosenTopic.directoryPath, 'chapters'))
     .filter(f => f.endsWith('.js'))
     .map(c => {
       return {
         title: c.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join(' ').slice(0, -3),
-        script: path.join(__dirname, chosenTopic.directory, 'chapters', c)
+        script: path.join(chosenTopic.directoryPath, 'chapters', c)
       };
     });
 
