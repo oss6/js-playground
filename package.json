@@ -1,0 +1,12 @@
+{
+  "name": "js-playground",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/oss6/js-playground.git",
+  "author": "oss6 <ossedb@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "inquirer": "^7.3.3"
+  }
+}

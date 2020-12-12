@@ -1,3 +1,3 @@
 # js-playground
 
-A JavaScript playground where I try stuff
+A JavaScript/NodeJS playground where I try stuff
