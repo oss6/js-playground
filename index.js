@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
+const mdToCli = require('./core/md-to-cli');
 
 function dashedToTitle(str) {
   const nonCapitalisedTitle = str.split('-').join(' ');
@@ -37,7 +38,7 @@ async function run() {
   const chosenTopic = topics.find(t => t.title === topicAnswer.topic);
 
   console.log(`\n${chalk.bold(chosenTopic.title)}\n`);
-  console.log(chosenTopic.readme);
+  console.log(mdToCli(chosenTopic.readme));
 
   // Get chapters for chosen topic
   // -----------------------------
