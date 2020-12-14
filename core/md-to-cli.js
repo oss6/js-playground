@@ -1,3 +1,4 @@
+const boxen = require('boxen');
 const chalk = require('chalk');
 
 module.exports = (markdownString) => {
@@ -6,7 +7,7 @@ module.exports = (markdownString) => {
       // Heading
       regex: /#+(.*)/g,
       replace(_, text) {
-        return chalk.bold(text.trim());
+        return `\n${chalk.bold(text.trim())}\n`;
       }
     },
     {
@@ -21,6 +22,13 @@ module.exports = (markdownString) => {
       regex: /_(.*?)_/g,
       replace(_, text) {
         return chalk.italic(text.trim());
+      }
+    },
+    // Code block
+    {
+      regex: /```([\s\S]*?)```/g,
+      replace(_, text) {
+        return `\n${boxen(text, { padding: 1 })}\n`;
       }
     },
     {

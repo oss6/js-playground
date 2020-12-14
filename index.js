@@ -5,6 +5,7 @@ const path = require('path');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
 const mdToCli = require('./core/md-to-cli');
+const jsToMd = require('./core/js-to-md');
 
 function dashedToTitle(str) {
   const nonCapitalisedTitle = str.split('-').join(' ');
@@ -69,7 +70,7 @@ async function run() {
     const sectionCode = sectionBody.slice(sectionBody.indexOf('{') + 1, sectionBody.lastIndexOf('}'));
 
     section();
-    console.log(sectionCode);
+    console.log(mdToCli(jsToMd(sectionCode)));
   }
 }
 
